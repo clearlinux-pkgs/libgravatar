@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : libgravatar
-Version  : 18.08.0
-Release  : 2
-URL      : https://download.kde.org/stable/applications/18.08.0/src/libgravatar-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/libgravatar-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/libgravatar-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 3
+URL      : https://download.kde.org/stable/applications/18.12.2/src/libgravatar-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/libgravatar-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/libgravatar-18.12.2.tar.xz.sig
+Summary  : KDE PIM library providing Gravatar support
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
-Requires: libgravatar-lib
-Requires: libgravatar-license
-Requires: libgravatar-locales
-Requires: libgravatar-data
+Requires: libgravatar-data = %{version}-%{release}
+Requires: libgravatar-lib = %{version}-%{release}
+Requires: libgravatar-license = %{version}-%{release}
+Requires: libgravatar-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : pimcommon-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 No detailed description available
@@ -36,9 +36,9 @@ data components for the libgravatar package.
 %package dev
 Summary: dev components for the libgravatar package.
 Group: Development
-Requires: libgravatar-lib
-Requires: libgravatar-data
-Provides: libgravatar-devel
+Requires: libgravatar-lib = %{version}-%{release}
+Requires: libgravatar-data = %{version}-%{release}
+Provides: libgravatar-devel = %{version}-%{release}
 
 %description dev
 dev components for the libgravatar package.
@@ -47,8 +47,8 @@ dev components for the libgravatar package.
 %package lib
 Summary: lib components for the libgravatar package.
 Group: Libraries
-Requires: libgravatar-data
-Requires: libgravatar-license
+Requires: libgravatar-data = %{version}-%{release}
+Requires: libgravatar-license = %{version}-%{release}
 
 %description lib
 lib components for the libgravatar package.
@@ -71,26 +71,26 @@ locales components for the libgravatar package.
 
 
 %prep
-%setup -q -n libgravatar-18.08.0
+%setup -q -n libgravatar-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535433847
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549918317
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535433847
+export SOURCE_DATE_EPOCH=1549918317
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/libgravatar
-cp COPYING %{buildroot}/usr/share/doc/libgravatar/COPYING
-cp COPYING.LIB %{buildroot}/usr/share/doc/libgravatar/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/libgravatar
+cp COPYING %{buildroot}/usr/share/package-licenses/libgravatar/COPYING
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/libgravatar/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -129,12 +129,12 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Gravatar.so.5
-/usr/lib64/libKF5Gravatar.so.5.9.0
+/usr/lib64/libKF5Gravatar.so.5.10.2
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/libgravatar/COPYING
-/usr/share/doc/libgravatar/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/libgravatar/COPYING
+/usr/share/package-licenses/libgravatar/COPYING.LIB
 
 %files locales -f libgravatar.lang
 %defattr(-,root,root,-)
