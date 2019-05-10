@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : libgravatar
-Version  : 19.04.0
-Release  : 6
-URL      : https://download.kde.org/stable/applications/19.04.0/src/libgravatar-19.04.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.0/src/libgravatar-19.04.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.0/src/libgravatar-19.04.0.tar.xz.sig
+Version  : 19.04.1
+Release  : 7
+URL      : https://download.kde.org/stable/applications/19.04.1/src/libgravatar-19.04.1.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.1/src/libgravatar-19.04.1.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.1/src/libgravatar-19.04.1.tar.xz.sig
 Summary  : KDE PIM library providing Gravatar support
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -39,6 +39,7 @@ Group: Development
 Requires: libgravatar-lib = %{version}-%{release}
 Requires: libgravatar-data = %{version}-%{release}
 Provides: libgravatar-devel = %{version}-%{release}
+Requires: libgravatar = %{version}-%{release}
 Requires: libgravatar = %{version}-%{release}
 
 %description dev
@@ -72,14 +73,14 @@ locales components for the libgravatar package.
 
 
 %prep
-%setup -q -n libgravatar-19.04.0
+%setup -q -n libgravatar-19.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557038593
+export SOURCE_DATE_EPOCH=1557500739
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -94,7 +95,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557038593
+export SOURCE_DATE_EPOCH=1557500739
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgravatar
 cp COPYING %{buildroot}/usr/share/package-licenses/libgravatar/COPYING
@@ -139,7 +140,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Gravatar.so.5
-/usr/lib64/libKF5Gravatar.so.5.11.0
+/usr/lib64/libKF5Gravatar.so.5.11.1
 
 %files license
 %defattr(0644,root,root,0755)
