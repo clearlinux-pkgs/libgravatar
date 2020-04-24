@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : libgravatar
-Version  : 19.12.3
-Release  : 18
-URL      : https://download.kde.org/stable/release-service/19.12.3/src/libgravatar-19.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.3/src/libgravatar-19.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.3/src/libgravatar-19.12.3.tar.xz.sig
-Summary  : KDE PIM library providing Gravatar support
+Version  : 20.04.0
+Release  : 19
+URL      : https://download.kde.org/stable/release-service/20.04.0/src/libgravatar-20.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.0/src/libgravatar-20.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.0/src/libgravatar-20.04.0.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
 Requires: libgravatar-data = %{version}-%{release}
@@ -44,7 +44,6 @@ Requires: libgravatar-lib = %{version}-%{release}
 Requires: libgravatar-data = %{version}-%{release}
 Provides: libgravatar-devel = %{version}-%{release}
 Requires: libgravatar = %{version}-%{release}
-Requires: libgravatar = %{version}-%{release}
 
 %description dev
 dev components for the libgravatar package.
@@ -77,36 +76,35 @@ locales components for the libgravatar package.
 
 
 %prep
-%setup -q -n libgravatar-19.12.3
-cd %{_builddir}/libgravatar-19.12.3
+%setup -q -n libgravatar-20.04.0
+cd %{_builddir}/libgravatar-20.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583534731
+export SOURCE_DATE_EPOCH=1587699422
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1583534731
+export SOURCE_DATE_EPOCH=1587699422
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgravatar
-cp %{_builddir}/libgravatar-19.12.3/COPYING %{buildroot}/usr/share/package-licenses/libgravatar/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/libgravatar-19.12.3/COPYING.LIB %{buildroot}/usr/share/package-licenses/libgravatar/9a1929f4700d2407c70b507b3b2aaf6226a9543c
+cp %{_builddir}/libgravatar-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/libgravatar/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/libgravatar-20.04.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/libgravatar/9a1929f4700d2407c70b507b3b2aaf6226a9543c
 pushd clr-build
 %make_install
 popd
@@ -147,7 +145,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Gravatar.so.5
-/usr/lib64/libKF5Gravatar.so.5.13.3
+/usr/lib64/libKF5Gravatar.so.5.14.0
 
 %files license
 %defattr(0644,root,root,0755)
