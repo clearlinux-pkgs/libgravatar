@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : libgravatar
-Version  : 21.12.3
-Release  : 37
-URL      : https://download.kde.org/stable/release-service/21.12.3/src/libgravatar-21.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.12.3/src/libgravatar-21.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.12.3/src/libgravatar-21.12.3.tar.xz.sig
+Version  : 22.04.0
+Release  : 38
+URL      : https://download.kde.org/stable/release-service/22.04.0/src/libgravatar-22.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.0/src/libgravatar-22.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.0/src/libgravatar-22.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0
@@ -23,17 +23,13 @@ BuildRequires : extra-cmake-modules-data
 BuildRequires : kconfig-dev
 BuildRequires : ki18n-dev
 BuildRequires : kio-dev
+BuildRequires : kpimtextedit-dev
 BuildRequires : ktextwidgets-dev
 BuildRequires : kwidgetsaddons-dev
 BuildRequires : pimcommon-dev
-BuildRequires : qtbase-dev mesa-dev
 
 %description
-# Gravatar
-Online avatar lookup library.
-Allows to retrieve avatar images based on a hash from a person's email address, as well
-as local caching to avoid unnecessary network operations. Use Gravatar::GravatarResolvUrlJob
-for this.
+SPDX-License-Identifier: CC0-1.0
 
 %package data
 Summary: data components for the libgravatar package.
@@ -82,15 +78,15 @@ locales components for the libgravatar package.
 
 
 %prep
-%setup -q -n libgravatar-21.12.3
-cd %{_builddir}/libgravatar-21.12.3
+%setup -q -n libgravatar-22.04.0
+cd %{_builddir}/libgravatar-22.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1646601544
+export SOURCE_DATE_EPOCH=1650835844
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -106,13 +102,15 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1646601544
+export SOURCE_DATE_EPOCH=1650835844
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgravatar
-cp %{_builddir}/libgravatar-21.12.3/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/libgravatar/29fb05b49e12a380545499938c4879440bd8851e
-cp %{_builddir}/libgravatar-21.12.3/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/libgravatar/8287b608d3fa40ef401339fd907ca1260c964123
-cp %{_builddir}/libgravatar-21.12.3/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/libgravatar/20079e8f79713dce80ab09774505773c926afa2a
-cp %{_builddir}/libgravatar-21.12.3/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/libgravatar/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
+cp %{_builddir}/libgravatar-22.04.0/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/libgravatar/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/libgravatar-22.04.0/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/libgravatar/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/libgravatar-22.04.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/libgravatar/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/libgravatar-22.04.0/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/libgravatar/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/libgravatar-22.04.0/README.md.license %{buildroot}/usr/share/package-licenses/libgravatar/83531e59fb16ef6f78484389fd0551b70a226866
+cp %{_builddir}/libgravatar-22.04.0/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/libgravatar/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -128,21 +126,21 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/usr/include/KF5/Gravatar/GravatarCache
-/usr/include/KF5/Gravatar/GravatarConfigWidget
-/usr/include/KF5/Gravatar/GravatarConfigureSettingsDialog
-/usr/include/KF5/Gravatar/GravatarConfigureSettingsWidget
-/usr/include/KF5/Gravatar/GravatarDownloadPixmapWidget
-/usr/include/KF5/Gravatar/GravatarResolvUrlJob
-/usr/include/KF5/gravatar/gravatar_export.h
-/usr/include/KF5/gravatar/gravatarcache.h
-/usr/include/KF5/gravatar/gravatarconfiguresettingsdialog.h
-/usr/include/KF5/gravatar/gravatarconfiguresettingswidget.h
-/usr/include/KF5/gravatar/gravatarconfigwidget.h
-/usr/include/KF5/gravatar/gravatardownloadpixmapwidget.h
-/usr/include/KF5/gravatar/gravatarresolvurljob.h
-/usr/include/KF5/gravatar/gravatarsettings.h
-/usr/include/KF5/gravatar_version.h
+/usr/include/KF5/Gravatar/Gravatar/GravatarCache
+/usr/include/KF5/Gravatar/Gravatar/GravatarConfigWidget
+/usr/include/KF5/Gravatar/Gravatar/GravatarConfigureSettingsDialog
+/usr/include/KF5/Gravatar/Gravatar/GravatarConfigureSettingsWidget
+/usr/include/KF5/Gravatar/Gravatar/GravatarDownloadPixmapWidget
+/usr/include/KF5/Gravatar/Gravatar/GravatarResolvUrlJob
+/usr/include/KF5/Gravatar/gravatar/gravatar_export.h
+/usr/include/KF5/Gravatar/gravatar/gravatarcache.h
+/usr/include/KF5/Gravatar/gravatar/gravatarconfiguresettingsdialog.h
+/usr/include/KF5/Gravatar/gravatar/gravatarconfiguresettingswidget.h
+/usr/include/KF5/Gravatar/gravatar/gravatarconfigwidget.h
+/usr/include/KF5/Gravatar/gravatar/gravatardownloadpixmapwidget.h
+/usr/include/KF5/Gravatar/gravatar/gravatarresolvurljob.h
+/usr/include/KF5/Gravatar/gravatar/gravatarsettings.h
+/usr/include/KF5/Gravatar/gravatar_version.h
 /usr/lib64/cmake/KF5Gravatar/KF5GravatarConfig.cmake
 /usr/lib64/cmake/KF5Gravatar/KF5GravatarConfigVersion.cmake
 /usr/lib64/cmake/KF5Gravatar/KF5GravatarTargets-relwithdebinfo.cmake
@@ -153,14 +151,16 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Gravatar.so.5
-/usr/lib64/libKF5Gravatar.so.5.19.3
+/usr/lib64/libKF5Gravatar.so.5.20.0
 
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/libgravatar/20079e8f79713dce80ab09774505773c926afa2a
-/usr/share/package-licenses/libgravatar/29fb05b49e12a380545499938c4879440bd8851e
 /usr/share/package-licenses/libgravatar/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 /usr/share/package-licenses/libgravatar/8287b608d3fa40ef401339fd907ca1260c964123
+/usr/share/package-licenses/libgravatar/83531e59fb16ef6f78484389fd0551b70a226866
+/usr/share/package-licenses/libgravatar/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+/usr/share/package-licenses/libgravatar/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
 
 %files locales -f libgravatar.lang
 %defattr(-,root,root,-)
