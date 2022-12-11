@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : libgravatar
-Version  : 22.08.3
-Release  : 45
-URL      : https://download.kde.org/stable/release-service/22.08.3/src/libgravatar-22.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.3/src/libgravatar-22.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.3/src/libgravatar-22.08.3.tar.xz.sig
+Version  : 22.12.0
+Release  : 46
+URL      : https://download.kde.org/stable/release-service/22.12.0/src/libgravatar-22.12.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.12.0/src/libgravatar-22.12.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.12.0/src/libgravatar-22.12.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause CC0-1.0 LGPL-2.0
@@ -78,15 +78,15 @@ locales components for the libgravatar package.
 
 
 %prep
-%setup -q -n libgravatar-22.08.3
-cd %{_builddir}/libgravatar-22.08.3
+%setup -q -n libgravatar-22.12.0
+cd %{_builddir}/libgravatar-22.12.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1667927665
+export SOURCE_DATE_EPOCH=1670784488
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,16 +102,16 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1667927665
+export SOURCE_DATE_EPOCH=1670784488
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libgravatar
-cp %{_builddir}/libgravatar-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/libgravatar/c011fda7746c087a127999da1c4044854ee42238 || :
-cp %{_builddir}/libgravatar-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/libgravatar/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9 || :
-cp %{_builddir}/libgravatar-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/libgravatar/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c || :
-cp %{_builddir}/libgravatar-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/libgravatar/8287b608d3fa40ef401339fd907ca1260c964123 || :
-cp %{_builddir}/libgravatar-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/libgravatar/20079e8f79713dce80ab09774505773c926afa2a || :
-cp %{_builddir}/libgravatar-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/libgravatar/83531e59fb16ef6f78484389fd0551b70a226866 || :
-cp %{_builddir}/libgravatar-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/libgravatar/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4 || :
+cp %{_builddir}/libgravatar-%{version}/.codespellrc.license %{buildroot}/usr/share/package-licenses/libgravatar/c011fda7746c087a127999da1c4044854ee42238
+cp %{_builddir}/libgravatar-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/libgravatar/c085897bc39e05746ffd2d889a6e84ff1b7ae2d9
+cp %{_builddir}/libgravatar-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/libgravatar/9950d3fdce1cff1f71212fb5abd31453c6ee2f8c
+cp %{_builddir}/libgravatar-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/libgravatar/8287b608d3fa40ef401339fd907ca1260c964123
+cp %{_builddir}/libgravatar-%{version}/LICENSES/LGPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/libgravatar/20079e8f79713dce80ab09774505773c926afa2a
+cp %{_builddir}/libgravatar-%{version}/README.md.license %{buildroot}/usr/share/package-licenses/libgravatar/83531e59fb16ef6f78484389fd0551b70a226866
+cp %{_builddir}/libgravatar-%{version}/metainfo.yaml.license %{buildroot}/usr/share/package-licenses/libgravatar/7ff5a7dd2c915b2b34329c892e06917c5f82f3a4
 pushd clr-build
 %make_install
 popd
@@ -152,7 +152,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libKF5Gravatar.so.5
-/usr/lib64/libKF5Gravatar.so.5.21.3
+/usr/lib64/libKF5Gravatar.so.5.22.0
 
 %files license
 %defattr(0644,root,root,0755)
